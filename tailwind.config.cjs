@@ -42,7 +42,9 @@ module.exports = {
   safelist: [
     ...bgClassNames,
     ...bgFromClassNames,
-    ...bgToClassNames],
+    ...bgToClassNames,
+    'animate-rotate'
+  ],
   plugins: [],
 }
 

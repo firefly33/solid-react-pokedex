@@ -1,5 +1,7 @@
 import { PokemonPreview } from './../entities/PokemonPreview';
 import Axios from "axios"
+import { Pokemon } from '../entities/Pokemon';
+import { Type } from '../entities/Type';
 
 interface PokemonSpecie {
     name: string;
@@ -18,12 +20,12 @@ export async function getAllPokemons (pokedex?: number) {
     const pokemonInfoPromises = pokemonData.map(async (entry: PokemonEntry) => {
         const { name: speciesName, url } = entry.pokemon_species;
         const pokemonInfoResponse = await Axios.get(url);
-        const { id } = pokemonInfoResponse.data;
-        const pokemonResponse = await Axios.get('https://pokeapi.co/api/v2/pokemon/' + id);
+        const { id : pkmonId} = pokemonInfoResponse.data;
+        const pokemonResponse = await Axios.get('https://pokeapi.co/api/v2/pokemon/' + pkmonId);
 
-        const { name, sprites, types } = pokemonResponse.data;
+        const { id, name, sprites, types } = pokemonResponse.data;
         const frontSpriteUrl = sprites.front_default;
-        return { name, frontSpriteUrl, officialFrontDefault: sprites.other['official-artwork'].front_default, types } as PokemonPreview;
+        return { id, name, frontSpriteUrl, officialFrontDefault: sprites.other['official-artwork'].front_default, types } as PokemonPreview;
         
     });
     const pokemonInfo: PokemonPreview[] = await Promise.all(pokemonInfoPromises);
@@ -51,4 +53,23 @@ export async function getHoennPokemons() {
     });
     const pokemonInfo: PokemonPreview[] = await Promise.all(pokemonInfoPromises);
     return pokemonInfo;
+}
+
+export async function getPokemon(pokemonId: number) {
+    if (!pokemonId) return null;
+    const pokemonResponse = await Axios.get('https://pokeapi.co/api/v2/pokemon/' + pokemonId);
+
+    const { id, name, sprites, types } = pokemonResponse.data;
+    const frontSpriteUrl = sprites.front_default;
+    debugger
+    const typesMapped: Type[] = types.map((type: any) => {
+        return { name: type.type.name } as Type
+    })
+    return {
+        id,
+        name,
+        frontSpriteUrl,
+        officialFrontDefault: sprites.other['official-artwork'].front_default,
+        types: typesMapped
+    } as Pokemon;
 }

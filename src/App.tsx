@@ -3,13 +3,14 @@ import reactLogo from './assets/react.svg'
 import './App.css'
 import { PokemonList } from './features/pokedex-navigation'
 import {
-  useQuery,
-  useMutation,
-  useQueryClient,
   QueryClient,
   QueryClientProvider,
 } from 'react-query'
 import PokedexNavigation from './features/pokedex-navigation/PokedexNavigation'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Layout from './layout/Layout'
+import PokemonPage from './features/pokemon-page/PokemonPage'
+
 
 function App() {
 
@@ -18,9 +19,16 @@ function App() {
   return (
     <div className="w-full h-screen">
      <QueryClientProvider client={queryClient}>
-        <div className='px-6 py-6'>
-          <PokedexNavigation />
-        </div>
+      <Router>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path='/:pokedexId' element={<PokedexNavigation />} />
+          <Route path='/pokemon/:pokemonId' element={<PokemonPage />} />
+        </Route>
+      </Routes>
+
+      </Router>
+
      </QueryClientProvider>
     </div>
   )
