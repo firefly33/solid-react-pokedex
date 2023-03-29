@@ -1,3 +1,5 @@
+import { gql } from 'graphql-request';
+import { GraphQLClient } from 'graphql-request';
 import { PokemonPreview } from './../entities/PokemonPreview';
 import Axios from "axios"
 import { Pokemon } from '../entities/Pokemon';
@@ -72,4 +74,55 @@ export async function getPokemon(pokemonId: number) {
         officialFrontDefault: sprites.other['official-artwork'].front_default,
         types: typesMapped
     } as Pokemon;
+}
+
+export async function searchPokemon(pokemonName: string) {
+    if (!pokemonName || pokemonName === '') return []
+
+    const API_URL = `https://beta.pokeapi.co/graphql/v1beta`;
+
+    const graphQLClient = new GraphQLClient(API_URL, {
+    //headers: {
+    //  Authorization: `Bearer ${process.env.API_KEY}`
+    }
+    );
+
+    const graphQLVariable: string = pokemonName + '%';
+    const { pokemon_v2_pokemon } = await graphQLClient.request(
+    gql`
+        query searchPokemon($pokemonName: String!) {
+            pokemon_v2_pokemon(where: {name: {_ilike: $pokemonName}}) {
+                name
+                id
+                weight
+                pokemon_v2_pokemonsprites {
+                  sprites
+                }
+                pokemon_v2_pokemontypes {
+                  pokemon_v2_type {
+                    name
+                  }
+                }
+            }
+          }
+    `,
+    { pokemonName: graphQLVariable }
+    ) as { pokemon_v2_pokemon: any };
+    const pokemonsFound: Pokemon[] = pokemon_v2_pokemon.map((entry: any) => {
+        debugger
+        const sprites: any = JSON.parse(entry.pokemon_v2_pokemonsprites[0].sprites)
+
+        return {
+            id: entry.id as number,
+            name: entry.name as string,
+            weight: entry.weight as number,
+            types: entry.pokemon_v2_pokemontypes.map((type: any) => {
+                return { name: type.pokemon_v2_type.name }
+            }) as Type[],
+            frontSpriteUrl: sprites.front_default,
+            officialFrontDefault: sprites.other['official-artwork'].front_default
+        } as Pokemon
+    }) 
+    console.log(pokemonsFound)
+    return pokemonsFound;
 }

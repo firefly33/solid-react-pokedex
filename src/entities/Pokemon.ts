@@ -6,5 +6,5 @@ export interface Pokemon {
     frontSpriteUrl: string;
     officialFrontDefault?: string;
     types: Type[];
-    weight:69
+    weight: number
 }

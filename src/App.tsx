@@ -10,6 +10,7 @@ import PokedexNavigation from './features/pokedex-navigation/PokedexNavigation'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Layout from './layout/Layout'
 import PokemonPage from './features/pokemon-page/PokemonPage'
+import TeamBuilderPage from './features/team-builder/TeamBuilderPage'
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path='/:pokedexId' element={<PokedexNavigation />} />
           <Route path='/pokemon/:pokemonId' element={<PokemonPage />} />
+          <Route path='/team-builder' element={<TeamBuilderPage />} />
         </Route>
       </Routes>
 

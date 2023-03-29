@@ -26,6 +26,7 @@ const pokemonTypeColors = {
   'fairy': '#D685AD',
 }
 
+
 const bgClassNames = Object.keys(pokemonTypeColors).map(key => `bg-${key}`)
 const bgFromClassNames = Object.keys(pokemonTypeColors).map(key => `from-${key}`)
 const bgToClassNames = Object.keys(pokemonTypeColors).map(key => `to-${key}`)

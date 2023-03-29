@@ -17,7 +17,7 @@ const PokemonList = ({ pokedex }: { pokedex: number }) => {
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 px-1 py-4 '>
       {pokemons.map(pokemon => (
-        <PokemonCard pokemon={pokemon} click={handleCardClick} />
+        <PokemonCard key={pokemon.id} pokemon={pokemon} click={handleCardClick} />
       ))}
     </div>
   )

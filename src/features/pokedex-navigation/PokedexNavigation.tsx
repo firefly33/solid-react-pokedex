@@ -26,7 +26,7 @@ const PokedexNavigation = () => {
     return (
         <div className='px-6 py-6 bg-fixed bg-right-top bg-no-repeat animate-none animate-rotate duration-5000 ease-linear' style={styles.container}>
             <div className='flex flex-col gap-2'>
-                <form onSubmit={handleSubmit} className='flex gap-4'>
+                <form onSubmit={handleSubmit} className='flex gap-4 self-start sticky'>
                     <input type="text" name="searchDex" className='border-solid border-gray-600 border-2 rounded-lg px-4 py-2' />
                     <button type='submit'>SEARCH</button>
                 </form>
