@@ -1,5 +1,4 @@
 import { useQuery } from "react-query";
-import { GraphQLClient, gql } from "graphql-request";
 import { searchPokemon } from "../../../services/PokemonService";
 
 export function useSearchPokemon(pokemonName: string) {

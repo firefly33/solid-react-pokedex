@@ -12,6 +12,9 @@ import Layout from './layout/Layout'
 import PokemonPage from './features/pokemon-page/PokemonPage'
 import TeamBuilderPage from './features/team-builder/TeamBuilderPage'
 
+import { ReactQueryDevtools } from 'react-query/devtools'
+import Testing from './components/Testing'
+
 
 function App() {
 
@@ -26,11 +29,13 @@ function App() {
           <Route path='/:pokedexId' element={<PokedexNavigation />} />
           <Route path='/pokemon/:pokemonId' element={<PokemonPage />} />
           <Route path='/team-builder' element={<TeamBuilderPage />} />
+          <Route path='/testing' element={<Testing />} />
         </Route>
       </Routes>
 
       </Router>
 
+      <ReactQueryDevtools initialIsOpen={false} />
      </QueryClientProvider>
     </div>
   )

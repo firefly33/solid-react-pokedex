@@ -2,6 +2,8 @@
 // tailwind.config.js`
 
 const pokemonTypeColors = {
+  'black': '#000000',
+  'white': '#FFFFFF',
   'normal': '#A8A77A',
   'fire': '#EE8130',
   'fire-dark': '',
@@ -46,7 +48,9 @@ module.exports = {
     ...bgToClassNames,
     'animate-rotate'
   ],
-  plugins: [],
+  plugins: [
+    require('tailwindcss-debug-screens'),
+  ],
 }
 
 /*grass: '#26d9b4',

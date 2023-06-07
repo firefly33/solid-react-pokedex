@@ -61,9 +61,8 @@ export async function getPokemon(pokemonId: number) {
     if (!pokemonId) return null;
     const pokemonResponse = await Axios.get('https://pokeapi.co/api/v2/pokemon/' + pokemonId);
 
-    const { id, name, sprites, types } = pokemonResponse.data;
+    const { id, name, sprites, types, stats } = pokemonResponse.data;
     const frontSpriteUrl = sprites.front_default;
-    debugger
     const typesMapped: Type[] = types.map((type: any) => {
         return { name: type.type.name } as Type
     })
@@ -72,7 +71,8 @@ export async function getPokemon(pokemonId: number) {
         name,
         frontSpriteUrl,
         officialFrontDefault: sprites.other['official-artwork'].front_default,
-        types: typesMapped
+        types: typesMapped,
+        stats
     } as Pokemon;
 }
 
