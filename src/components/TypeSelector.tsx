@@ -27,6 +27,10 @@ function TypeSelector({
     return types.findIndex((x) => x.name === name) === selected;
   }
 
+  function getTypeTagImage(name: string) {
+    return <img className="w-6" src={`/src/assets/types/icons/${name}.svg`} />;
+}
+
   return (
     <section className="flex flex-col justify-center items-center gap-2 text-bold text-xl capitalize text-gray-600">
       <h2 className="text-gray text-2xl">Filtrer par type...</h2>
@@ -35,6 +39,7 @@ function TypeSelector({
           <TypeTag
             key={type.name}
             name={type.name}
+            icon={getTypeTagImage(type.name)}
             selected={isTagSelected(type.name)}
             onClick={handleSelectType}
           />
