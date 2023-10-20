@@ -21,8 +21,6 @@ function SRP() {
   useEffect(() => {
     getHoennPokemons()
       .then((res) => {
-        console.log(res);
-
         if (typeFilter) {
           const pokemonsFilteredByType = res.filter((x) =>
             typeIncludes(typeFilter?.name, x.types)
