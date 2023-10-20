@@ -3,17 +3,24 @@
 @tailwind utilities;
 
 @keyframes rotate {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .gradientim {
-
-        background-color: rgb(148, 163, 184);
-        background-image: radial-gradient(at 96% 100%, rgb(153, 246, 228) 0, transparent 56%), radial-gradient(at 62% 87%, rgb(17, 94, 89) 0, transparent 65%), radial-gradient(at 1% 63%, rgb(125, 211, 252) 0, transparent 93%), radial-gradient(at 13% 77%, rgb(30, 41, 59) 0, transparent 83%), radial-gradient(at 3% 29%, rgb(186, 230, 253) 0, transparent 60%), radial-gradient(at 80% 39%, rgb(186, 230, 253) 0, transparent 25%);
-      
+  background-color: rgb(148, 163, 184);
+  background-image: radial-gradient(
+      at 96% 100%,
+      rgb(153, 246, 228) 0,
+      transparent 56%
+    ),
+    radial-gradient(at 62% 87%, rgb(17, 94, 89) 0, transparent 65%),
+    radial-gradient(at 1% 63%, rgb(125, 211, 252) 0, transparent 93%),
+    radial-gradient(at 13% 77%, rgb(30, 41, 59) 0, transparent 83%),
+    radial-gradient(at 3% 29%, rgb(186, 230, 253) 0, transparent 60%),
+    radial-gradient(at 80% 39%, rgb(186, 230, 253) 0, transparent 25%);
 }

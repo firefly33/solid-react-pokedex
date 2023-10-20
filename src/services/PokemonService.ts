@@ -39,22 +39,25 @@ export async function getHoennPokemons() {
     const pokemonData = response.data.pokemon_entries as PokemonEntry[];
     const pokemonInfoPromises = pokemonData.map(async (entry: PokemonEntry) => {
         const { name: speciesName, url } = entry.pokemon_species;
-        if (speciesName === 'deoxys') {
-            const deoxysInfoResponse = await Axios.get(url);
-            const { id } = deoxysInfoResponse.data;
-            const deoxysPokemonResponse = await Axios.get('https://pokeapi.co/api/v2/pokemon/' + id);
+        if (speciesName === 'deoxys') return handleDeoxysSpecies(url)
 
-            const { name, sprites, types } = deoxysPokemonResponse.data;
-            const frontSpriteUrl = sprites.front_default;
-            return { name, frontSpriteUrl, officialFrontDefault: sprites.other['official-artwork'].front_default, types } as PokemonPreview;
-        }
         const pokemonInfoResponse = await Axios.get('https://pokeapi.co/api/v2/pokemon/' + speciesName);
-        const { name, sprites, types } = pokemonInfoResponse.data;
+        const { id, name, sprites, types } = pokemonInfoResponse.data;
         const frontSpriteUrl = sprites.front_default;
-        return { name, frontSpriteUrl, officialFrontDefault: sprites.other['official-artwork'].front_default, types } as PokemonPreview;
+        return { id, name, frontSpriteUrl, officialFrontDefault: sprites.other['official-artwork'].front_default, types } as PokemonPreview;
     });
     const pokemonInfo: PokemonPreview[] = await Promise.all(pokemonInfoPromises);
     return pokemonInfo;
+}
+
+async function handleDeoxysSpecies(url: string) {
+    const deoxysInfoResponse = await Axios.get(url);
+    const { id } = deoxysInfoResponse.data;
+    const deoxysPokemonResponse = await Axios.get('https://pokeapi.co/api/v2/pokemon/' + id);
+
+    const { name, sprites, types } = deoxysPokemonResponse.data;
+    const frontSpriteUrl = sprites.front_default;
+    return { id, name, frontSpriteUrl, officialFrontDefault: sprites.other['official-artwork'].front_default, types } as PokemonPreview;
 }
 
 export async function getPokemon(pokemonId: number) {
