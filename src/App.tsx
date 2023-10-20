@@ -11,7 +11,7 @@ import Testing from "./components/Testing";
 import SRP from "./solid-principles/1_SRP/good";
 import OCP from "./solid-principles/2_OCP/good";
 import LSP from "./solid-principles/3_LSP/good";
-import ISP from "./solid-principles/4_ISP/bad";
+import ISP from "./solid-principles/4_ISP/good";
 import DIP from "./solid-principles/5_DIP/bad";
 
 function App() {

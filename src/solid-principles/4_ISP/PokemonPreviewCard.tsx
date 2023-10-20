@@ -1,14 +1,13 @@
 import H2 from "../../components/shared/H2";
 import { PokemonPreview } from "../../entities/PokemonPreview";
 
+function PokemonImage({ imageUrl }: { imageUrl?: string }) {
+  return <img className="w-20" src={imageUrl} />
+}
+
 export interface PokemonPreviewCardProps {
   pokemon: PokemonPreview;
 }
-
-function PokemonImage({ pokemon }: { pokemon: PokemonPreview }) {
-  return <img className="w-20" src={pokemon.officialFrontDefault} />
-}
-
 function PokemonPreviewCard(props: PokemonPreviewCardProps) {
   const { pokemon } = props;
 
@@ -22,7 +21,7 @@ function PokemonPreviewCard(props: PokemonPreviewCardProps) {
     <div
       className={`px-4 py-2 w-80 rounded-2xl flex flex-col gap-2 items-center ${bgColor} `}
     >
-      <PokemonImage pokemon={pokemon} />
+      <PokemonImage imageUrl={pokemon.officialFrontDefault} />
       <H2 className="text-white">{pokemon.name}</H2>
     </div>
   );
