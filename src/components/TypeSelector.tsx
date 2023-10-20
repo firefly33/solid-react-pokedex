@@ -44,17 +44,4 @@ function TypeSelector({
   );
 }
 
-/*
-<div
-            key={type.name}
-            className={`flex items-center gap-1 cursor-pointer ${getTagBgColor(
-              type
-            )} shadow-xl shadow-${getTagBgColor(
-              type
-            )} rounded-full text-white px-4 py-1 text-2xl`}
-            onClick={handleSelectType(type)}
-          >
-            <span>{type.name}</span>
-          </div>
-*/
 export default TypeSelector;

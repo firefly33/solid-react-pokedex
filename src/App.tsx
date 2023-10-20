@@ -1,7 +1,4 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
-import { PokemonList } from "./features/pokedex-navigation";
 import { QueryClient, QueryClientProvider } from "react-query";
 import PokedexNavigation from "./features/pokedex-navigation/PokedexNavigation";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
