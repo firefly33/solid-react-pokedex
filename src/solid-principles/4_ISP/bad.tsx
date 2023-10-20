@@ -1,4 +1,3 @@
-import { PokemonList } from "../../features/pokedex-navigation";
 import { useGetPokemons } from "../../features/pokedex-navigation/hooks/useGetPokemons";
 import PokemonPreviewCard from "./PokemonPreviewCard";
 
