@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Form({ onSubmit }) {
+function Form({ onSubmit }: any) {
+  const [name, setName] = useState("");
+  const [type, setType] = useState("");
+
+  function handleSubmit (event: any) {
+    event.preventDefault();
+    onSubmit(name, type)
+  }
+
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleSubmit}>
       <section className="flex flex-col gap-2">
         <label>... son nom</label>
         <input
