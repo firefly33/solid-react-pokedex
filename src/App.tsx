@@ -23,6 +23,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Layout />}>
+              <Route index={true} element={<Testing />} />
               <Route path="/:pokedexId" element={<PokedexNavigation />} />
               <Route path="/pokemon/:pokemonId" element={<PokemonPage />} />
               <Route path="/team-builder" element={<TeamBuilderPage />} />
