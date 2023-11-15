@@ -1,13 +1,13 @@
-import React from 'react'
-import TypeSelector from '../../components/TypeSelector';
-import { getAllTypes } from '../../constants/Types';
-import PokemonCard from '../../features/pokedex-navigation/components/PokemonCard';
-import useGetAndFilterPokemons from './hooks/useGetAndFilterPokemons'
+import TypeSelector from "../../components/TypeSelector";
+import { getAllTypes } from "../../constants/Types";
+import PokemonCard from "../../features/pokedex-navigation/components/PokemonCard";
+import useGetAndFilterPokemons from "./hooks/useGetAndFilterPokemons";
+
+const types = getAllTypes();
 
 function SRP() {
-    const { pokemons, handleFilter } = useGetAndFilterPokemons();
-    const types = getAllTypes();
-    
+  const { pokemons, handleFilter } = useGetAndFilterPokemons();
+
   return (
     <section className="flex flex-col gap-8 px-4 md:px-6 lg:px-52 py-10">
       <TypeSelector types={types} onFilter={handleFilter} />
@@ -25,7 +25,7 @@ function SRP() {
         )}
       </div>
     </section>
-  )
+  );
 }
 
-export default SRP
+export default SRP;

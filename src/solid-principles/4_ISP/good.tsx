@@ -15,7 +15,12 @@ function ISP() {
   return (
     <section className="px-32 py-9 flex flex-col gap-4 items-center justify-center">
       {pokemons?.map((pkmn) => (
-        <PokemonPreviewCard key={pkmn.id} pokemon={pkmn} />
+        <PokemonPreviewCard
+          key={pkmn.id}
+          name={pkmn.name}
+          sprite={pkmn.frontSpriteUrl}
+          types={pkmn.types}
+        />
       ))}
     </section>
   );

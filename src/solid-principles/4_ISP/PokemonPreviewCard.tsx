@@ -1,28 +1,35 @@
 import H2 from "../../components/shared/H2";
-import { PokemonPreview } from "../../entities/PokemonPreview";
+import { TypePreview } from "../../entities/TypePreview";
 
-function PokemonImage({ imageUrl }: { imageUrl?: string }) {
-  return <img className="w-20" src={imageUrl} />
+interface PokemonImageProps {
+  readonly imageUrl?: string;
+}
+
+function PokemonImage({ imageUrl }: PokemonImageProps) {
+  return <img className="w-20" src={imageUrl} />;
 }
 
 export interface PokemonPreviewCardProps {
-  pokemon: PokemonPreview;
+  readonly name: string;
+  readonly sprite: string | undefined;
+  readonly types: TypePreview[];
 }
-function PokemonPreviewCard(props: PokemonPreviewCardProps) {
-  const { pokemon } = props;
 
-  const isAlt = pokemon.types.length > 1;
+function PokemonPreviewCard(props: PokemonPreviewCardProps) {
+  const { name, sprite, types } = props;
+
+  const isAlt = types.length > 1;
 
   const bgColor = isAlt
-    ? `bg-gradient-to-r from-${pokemon.types[0].type.name} to-${pokemon.types[1].type.name}`
-    : `bg-${pokemon.types[0].type.name}`;
+    ? `bg-gradient-to-r from-${types[0].type.name} to-${types[1].type.name}`
+    : `bg-${types[0].type.name}`;
 
   return (
     <div
       className={`px-4 py-2 w-80 rounded-2xl flex flex-col gap-2 items-center ${bgColor} `}
     >
-      <PokemonImage imageUrl={pokemon.officialFrontDefault} />
-      <H2 className="text-white">{pokemon.name}</H2>
+      <PokemonImage imageUrl={sprite} />
+      <H2 className="text-white">{name}</H2>
     </div>
   );
 }

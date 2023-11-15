@@ -1,7 +1,5 @@
-import { getAllTypes } from "../../constants/Types";
 import { useGetPokemons } from "../../features/pokedex-navigation/hooks/useGetPokemons";
 import PkmnCard from "./components/PkmnCard";
-import TypeTag from "./TypeTag";
 
 function OCP() {
   const { pokemons, isLoading } = useGetPokemons(5);
