@@ -4,11 +4,11 @@ import useTestMutation from "./hooks/useTestMutation";
 function ClosedForm() {
   const [name, setName] = useState("");
   const [type, setType] = useState("");
-  const { mutate, isLoading } = useTestMutation();
+  const { mutate: searchPokemon, isLoading } = useTestMutation();
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    mutate({
+    searchPokemon({
       name: name,
       type: type,
     });
