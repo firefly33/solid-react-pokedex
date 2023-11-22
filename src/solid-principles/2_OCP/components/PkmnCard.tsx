@@ -1,9 +1,9 @@
-import React, { ReactNode } from "react";
-import { PokemonPreview } from "../../../entities/PokemonPreview";
+import { ReactNode } from "react";
 import Vector from "../../../assets/FrameBall.svg";
 import TypeTag from "../../../features/pokedex-navigation/components/TypeTag";
-import { Type } from "../../../entities/Type";
 import { TypePreview } from "../../../entities/TypePreview";
+
+// Show always what's happening in the frontend
 
 interface PokemonCardProps {
   id: number;

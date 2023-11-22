@@ -1,6 +1,8 @@
 import H2 from "../../components/shared/H2";
 import { TypePreview } from "../../entities/TypePreview";
 
+// Speak only about PokemonImage
+
 interface PokemonImageProps {
   readonly imageUrl?: string;
 }
