@@ -13,6 +13,7 @@ import OCP from "./solid-principles/2_OCP/good";
 import LSP from "./solid-principles/3_LSP/good";
 import ISP from "./solid-principles/4_ISP/good";
 import DIP from "./solid-principles/5_DIP/bad";
+import ContextAxiosTestPage from "./solid-principles/5_DIP/implem-v2/pages/ContextAxiosTestPage";
 
 function App() {
   const queryClient = new QueryClient();
@@ -33,6 +34,7 @@ function App() {
               <Route path="/lsp" element={<LSP />} />
               <Route path="/isp" element={<ISP />} />
               <Route path="/dip" element={<DIP />} />
+              <Route path="/dip/v2" element={<ContextAxiosTestPage />} />
             </Route>
           </Routes>
         </Router>
